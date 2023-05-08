@@ -9,3 +9,4 @@
     "skipLibCheck": true
   }
 }
+// example command: ts-node src/medium/binarysearch/33.ts
