@@ -48,7 +48,24 @@ function isAnagram242(s: string, t: string): boolean {
   return compareMaps(sMap, tMap);
 }
 
+function isAnagramOptimal(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;
+
+  const charCount = new Array<number>(26).fill(0);
+
+  for (let i = 0; i < s.length; i++) {
+    charCount[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+    charCount[t.charCodeAt(i) - 'a'.charCodeAt(0)]--;
+  }
+
+  for (let count of charCount) {
+    if (count !== 0) return false;
+  }
+
+  return true;
+}
+
 const s242 = 'anagram';
 const t242 = 'nagaram';
 
-console.log(isAnagram242(s242, t242));
+console.log(isAnagramOptimal(s242, t242));
