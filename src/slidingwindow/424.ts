@@ -1,3 +1,5 @@
+// Time Complexity: O(N), where N is the length of the input string 's'.
+// Space Complexity: O(1), as the space used by 'charMap' is constant.
 function characterReplacement(s: string, k: number): number {
   let leftPointer = 0;
   let result = 0;
