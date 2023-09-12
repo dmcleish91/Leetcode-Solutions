@@ -23,29 +23,32 @@ function isAnagram242(s: string, t: string): boolean {
   if (s.length !== t.length) return false;
 
   // Create maps to store character frequencies in both strings.
-  const sMap = new Map<string, number>();
-  const tMap = new Map<string, number>();
+  const countMap = new Map<string, number>();
 
   // Populate the maps with character frequencies for string 's'.
   for (let index = 0; index < s.length; index++) {
-    if (sMap.get(s.charAt(index)) === undefined) {
-      sMap.set(s.charAt(index), 1);
+    if (countMap.get(s.charAt(index)) === undefined) {
+      countMap.set(s.charAt(index), 1);
     } else {
-      sMap.set(s.charAt(index), sMap.get(s.charAt(index))! + 1);
+      countMap.set(s.charAt(index), countMap.get(s.charAt(index))! + 1);
     }
   }
 
   // Populate the maps with character frequencies for string 't'.
   for (let index = 0; index < t.length; index++) {
-    if (tMap.get(t.charAt(index)) === undefined) {
-      tMap.set(t.charAt(index), 1);
+    if (countMap.get(t.charAt(index)) === undefined) {
+      return false;
     } else {
-      tMap.set(t.charAt(index), tMap.get(t.charAt(index))! + 1);
+      countMap.set(t.charAt(index), countMap.get(t.charAt(index))! - 1);
     }
   }
 
-  // Compare the character frequency maps of both strings.
-  return compareMaps(sMap, tMap);
+  for (const [k, v] of countMap) {
+    if (v !== 0) {
+      return false
+    }
+  }
+  return true
 }
 
 function isAnagramOptimal(s: string, t: string): boolean {
@@ -68,4 +71,4 @@ function isAnagramOptimal(s: string, t: string): boolean {
 const s242 = 'anagram';
 const t242 = 'nagaram';
 
-console.log(isAnagramOptimal(s242, t242));
+console.log(isAnagram242(s242, t242));
