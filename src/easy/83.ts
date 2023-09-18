@@ -19,15 +19,6 @@ function deleteDuplicates(head: ListNode | null) {
   return head;
 }
 
-class ListNode {
-  val: number;
-  next: ListNode | null;
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
-
 const node1 = new ListNode(1);
 const node2 = new ListNode(1);
 const node3 = new ListNode(2);
