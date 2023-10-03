@@ -25,3 +25,5 @@ function longestConsecutive(nums: number[]): number {
   // Return the length of the longest consecutive sequence.
   return longest;
 }
+
+// store items in a set and check if the current item is the start of a set then see how long the set it
