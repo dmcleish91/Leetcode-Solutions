@@ -45,10 +45,10 @@ function isAnagram242(s: string, t: string): boolean {
 
   for (const [k, v] of countMap) {
     if (v !== 0) {
-      return false
+      return false;
     }
   }
-  return true
+  return true;
 }
 
 function isAnagramOptimal(s: string, t: string): boolean {
