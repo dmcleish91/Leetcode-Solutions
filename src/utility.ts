@@ -8,3 +8,6 @@ class TreeNode {
     this.right = right === undefined ? null : right;
   }
 }
+
+// add comments to this code to help me understand how this algorithm is used to solve
+// leetcode question [] also add the time and space complexity as a comment before the function
