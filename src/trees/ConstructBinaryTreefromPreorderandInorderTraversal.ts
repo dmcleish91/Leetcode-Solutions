@@ -1,3 +1,9 @@
+// The trick to solving this problem is to under that that the first index of preorder is
+// always the root and inorder the left and right of the index of the root is the left and right branches
+// so you can use recursion to always find the root of each node
+
+// Time Complexity: O(n^2) in the worst case
+// Space Complexity: O(n^2) in the worst case
 function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
   if (preorder.length === 0 || inorder.length === 0) return null;
 
