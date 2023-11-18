@@ -1,3 +1,5 @@
+// Time Complexity: O(2^n) it may consider all possible combinations, which is exponential.
+// Space Complexity: O(2^n) The result array can also have exponential combinations
 function combinationSum2(candidates: number[], target: number): number[][] {
   // Sort the candidates to ensure ascending order
   candidates.sort();
