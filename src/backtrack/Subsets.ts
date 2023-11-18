@@ -3,7 +3,7 @@ function subsets(nums: number[]): number[][] {
   const subset = [];
 
   function dfs(i: number) {
-    if (i >= nums.length) {
+    if (i === nums.length) {
       result.push(subset.slice());
       return;
     }
