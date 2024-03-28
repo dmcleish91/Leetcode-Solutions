@@ -13,7 +13,16 @@ const test = 'A man, a plan, a canal: Panama';
  * @return {boolean} - True if the input is a palindrome, false otherwise.
  */
 function isPalindromeOriginal(s: string): boolean {
-  const formatted = s.replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
+  s = s.toLowerCase();
+
+  let formatted = '';
+
+  for (const char of s) {
+    if ((char >= 'a' && char <= 'z') || (char >= '0' && char <= '9')) {
+      formatted += char;
+    }
+  }
+
   let left = 0;
   let right = formatted.length - 1;
 
