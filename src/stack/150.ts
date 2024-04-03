@@ -49,3 +49,47 @@ function evalRPN(tokens: string[]): number {
 }
 
 console.log(evalRPN(['10', '6', '9', '3', '+', '-11', '*', '/', '*', '17', '+', '5', '+']));
+
+function eval(tokens: string[]): number {
+  if (tokens.length === 1) {
+    return parseInt(tokens[0]);
+  }
+
+  const stack: number[] = [];
+  let op1: number;
+  let op2: number;
+  let answer = 0;
+  for (const token of tokens) {
+    switch (token) {
+      case '+':
+        op2 = stack.pop();
+        op1 = stack.pop();
+        answer = op1 + op2;
+        stack.push(answer);
+        break;
+      case '-':
+        op2 = stack.pop();
+        op1 = stack.pop();
+        answer = op1 - op2;
+        stack.push(answer);
+        break;
+      case '/':
+        op2 = stack.pop();
+        op1 = stack.pop();
+        answer = Math.trunc(op1 / op2);
+        stack.push(answer);
+        break;
+      case '*':
+        op2 = stack.pop();
+        op1 = stack.pop();
+        answer = op1 * op2;
+        stack.push(answer);
+        break;
+      default:
+        stack.push(parseInt(token));
+        break;
+    }
+  }
+
+  return answer;
+}
