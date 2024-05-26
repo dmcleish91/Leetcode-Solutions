@@ -1,4 +1,4 @@
-const nums = [-1, -1];
+const nums = [1];
 const target = 1;
 
 function topKFrequent(nums: number[], target: number) {
@@ -38,6 +38,5 @@ function topKFrequent(nums: number[], target: number) {
     }
   }
 }
-
 
 console.log(topKFrequent(nums, target));

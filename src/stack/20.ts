@@ -8,39 +8,33 @@
 // - Other auxiliary data structures used (mapping, character array) occupy constant space.
 // - Overall, space complexity is proportional to the length of the input string.
 function isValid(s: string): boolean {
-  const closingToOpening: { [key: string]: string } = {
-    '}': '{',
-    ']': '[',
-    ')': '(',
-  };
+  // Create a map to store closing brackets as keys and their corresponding opening brackets as values
+  const hashmap = new Map<string, string>();
+  hashmap.set(']', '[');
+  hashmap.set('}', '{');
+  hashmap.set(')', '(');
 
+  // Create an empty stack to store opening brackets
   const stack: string[] = [];
-  const chars = s.split('');
 
-  // Iterate through each character in the array.
-  for (let i = 0; i < chars.length; i++) {
-    const element = chars[i];
-
-    // If the current character is a closing parenthesis we pop and check if its valid
-    // Or if its a opening we push it onto the stack
-    if (element in closingToOpening) {
-      const pop = stack.pop();
-
-      // If the popped element doesn't match the corresponding opening parenthesis,
-      // the nesting is invalid, and we return false.
-      if (closingToOpening[element] === pop) {
-        continue;
-      } else {
+  // Loop through each character in the input string
+  for (const value of s) {
+    // If the current character is a closing bracket
+    if (hashmap.has(value)) {
+      // Pop the top element from the stack
+      const open = stack.pop();
+      // If the corresponding opening bracket for the current closing bracket doesn't match the popped value
+      if (hashmap.get(value) !== open) {
+        // Return false because the brackets are not properly matched
         return false;
       }
     } else {
-      stack.push(element);
+      // If the current character is an opening bracket, push it onto the stack
+      stack.push(value);
     }
   }
 
+  // After looping through all characters, if there are still elements in the stack, return false
+  // Otherwise, return true indicating all brackets are properly matched
   return stack.length === 0;
 }
-
-const sq = '()[]{}';
-
-console.log(isValid(sq));
